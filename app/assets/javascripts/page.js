@@ -142,17 +142,14 @@ ListView = function() {
 }
 
 $(function(){
+  Handlebars.registerHelper('shortDate', function(date) {
+    console.log(date, typeof date);
+    return new Date(Date.parse(date)).toDateString();
+  });
+
   var view = new ListView();
   view.initialize();
   view.show();
-
-
-  /*
-  view.model.add("a", 1, 1);
-  view.model.add("b", 1, 2);
-  view.model.add("c", 2, 1);
-  view.model.add("d", 1, 3);
-  */
 });
 
 
