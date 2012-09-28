@@ -9,7 +9,11 @@ class DecisionsController < ApplicationController
 
   def create
     # add to db
-    #decision = params[:decision]
+    puts params.inspect
+    decision = Decision.new(params[:decision])
+    decision.save
+
+    render :json => params
   end
 
   def new

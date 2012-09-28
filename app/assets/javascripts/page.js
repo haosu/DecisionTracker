@@ -5,6 +5,16 @@ ListMaker = function(){
     list : [],
 
     add : function(name, value, time) {
+      // add to the server
+      $.post("/decisions", 
+        { decision : {
+          name : name,
+          value : value,
+          time : time }
+        }, function(){
+          console.log('succ');
+        });
+
       // create a new item, add it to the list
       var item = new ListItem();
       item.initialize(name, value, time);
@@ -16,11 +26,24 @@ ListMaker = function(){
     },
 
     getAll : function(comparator) {
-      if(!comparator) {
-        return this.list
-      }
+      // get from the server
+      // /decisions
 
-      return this.list.sort(comparator);
+      var toReturn = {};
+
+      $.ajax("/decisions", {
+        async : false,
+        success : function(data) {
+          toReturn = data;
+        }
+      });
+
+      
+      if(!comparator) {
+        return toReturn;
+      }
+      
+      return toReturn.sort(comparator);
     }
 
     // keep this in sorted order
@@ -126,11 +149,15 @@ ListView = function() {
 $(function(){
   var view = new ListView();
   view.initialize();
+  view.show();
 
-  view.model.add("name", 1, 1);
-  view.model.add("name", 1, 2);
-  view.model.add("name", 2, 1);
-  view.model.add("name", 1, 3);
+
+  /*
+  view.model.add("a", 1, 1);
+  view.model.add("b", 1, 2);
+  view.model.add("c", 2, 1);
+  view.model.add("d", 1, 3);
+  */
 });
 
 
