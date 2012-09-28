@@ -15,12 +15,6 @@ ListMaker = function(){
           console.log('succ');
         });
 
-      // create a new item, add it to the list
-      var item = new ListItem();
-      item.initialize(name, value, time);
-
-      this.list.push(item);
-
       //emit data changed
       $(this).trigger("data");
     },
@@ -123,15 +117,16 @@ ListView = function() {
     },
 
     show : function() {
-      this.container.find("ul").empty();
+      this.container.find("tbody").empty();
 
       var list = this.model.getAll(this.currentComparator);
 
       var val = "";
       for(var i=0; i<list.length; i++) {
         val = list[i];
+        //prettyTime = val.created_at
 
-        $("ul").append(
+        $("tbody").append(
           this.entryTemplate(val)
         );
       }

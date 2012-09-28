@@ -2,10 +2,23 @@
 <h1>Stuff</h1>
 
 
+
+
 <script type="text/x-handlebars-template" id="list-template">
 
 <div class="container" id="{{id}}">
-  <ul></ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Decision</th>
+        <th>Value</th>
+        <th>Time</th>
+        <th>Worth</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
   <input type="text" value="" placeholder="name" class="name">
   <input type="text" value="" placeholder="value" class="value">
   <input type="text" value="" placeholder="time" class="time">
@@ -20,6 +33,13 @@
 <br>
 
 
+
 <script type="text/x-handlebars-template" id="entry-template">
-  <li>{{name}} {{value}} {{time}} {{worth}}</li>
+<tr>
+  <td>{{name}}</td>
+  <td>{{value}}</td>
+  <td>{{time}}</td>
+  <td>{{worth}}</td>
+  <td>{{created_at}}</td>
+</tr>
 </script>
