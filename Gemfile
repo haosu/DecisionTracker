@@ -25,6 +25,10 @@ group :development do
   gem 'heroku'
 end 
 
+group :production do 
+  gem 'pg'
+end 
+
 gem 'jquery-rails'
 
 
