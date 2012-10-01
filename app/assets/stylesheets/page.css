@@ -1,0 +1,7 @@
+body, h1 {
+  font-family: Helvetica;
+}
+.container table {
+  width: 600px;
+  text-align: center;
+}
